@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔢</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Calculator Mode -->
+        <div id="calculator-mode" class="mode active">
+            <div class="calculator">
+                <div class="display">
+                    <input type="text" id="display" readonly value="0">
+                </div>
+                <div class="buttons">
+                    <button class="btn clear" onclick="clearDisplay()">C</button>
+                    <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+                    <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+                    <button class="btn clear" onclick="deleteLast()">⌫</button>
+                    
+                    <button class="btn number" onclick="appendToDisplay('7')">7</button>
+                    <button class="btn number" onclick="appendToDisplay('8')">8</button>
+                    <button class="btn number" onclick="appendToDisplay('9')">9</button>
+                    <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+                    
+                    <button class="btn number" onclick="appendToDisplay('4')">4</button>
+                    <button class="btn number" onclick="appendToDisplay('5')">5</button>
+                    <button class="btn number" onclick="appendToDisplay('6')">6</button>
+                    <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+                    
+                    <button class="btn number" onclick="appendToDisplay('1')">1</button>
+                    <button class="btn number" onclick="appendToDisplay('2')">2</button>
+                    <button class="btn number" onclick="appendToDisplay('3')">3</button>
+                    <button class="btn equals" onclick="calculate()" rowspan="2">=</button>
+                    
+                    <button class="btn number zero" onclick="appendToDisplay('0')">0</button>
+                    <button class="btn number" onclick="appendToDisplay('.')">.</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Mode -->
+        <div id="chat-mode" class="mode">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3 id="chat-title">Secret Chat</h3>
+                    <div class="chat-controls">
+                        <button id="clear-chat" class="btn-danger" onclick="clearAllChats()">🗑️ Clear All</button>
+                        <button id="exit-chat" class="btn-secondary" onclick="exitChat()">📱 Calculator</button>
+                    </div>
+                </div>
+                <div id="messages" class="messages-container">
+                    <!-- Messages will be displayed here -->
+                </div>
+                <div class="message-input">
+                    <input type="text" id="message-text" placeholder="Type your message..." maxlength="500">
+                    <button id="send-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+    
+    <!-- Application Scripts -->
+    <script type="module" src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
